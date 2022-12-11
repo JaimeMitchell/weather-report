@@ -159,29 +159,6 @@ const changeSky = () => {
 const skySelect = document.getElementById('sky-select');
 skySelect.addEventListener('change', changeSky);
 
-// let sky;
-// let color;
-// const skySelect = document.getElementById('sky-select').value;
-// const landscapeContent = document.getElementsByClassName('landscpe-content');
-// const emojiSky = document.getElementById('emoji-sky');
-// const changesky = () => {
-//   if (skySelect === 'The Heat Is On') {
-//     emojiSky.textContent = '☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️';
-//   } else if (skySelect.textContent === 'Chasing the clouds away') {
-//     emojiSky.textContent = '☀️🌈☀️🦄☀️🌈☀️☀️🌈☀️🦄☀️🌈☀️';
-//   } else if (skySelect.textContent === 'Rain on me') {
-//     emojiSky.textContent = '🌈🌧💧💧💧🌧💧💧💧🌧🌈';
-//   } else if (skySelect.textContent === 'Ice Ice Baby') {
-//     emojiSky.textContent = '🌧⛈🌧🌧💧🌧🌦🌧💧🌧🌧';
-//   }
-// };
-
-// const landscapeContent = document.getElementsByClassName('landscape-content');
-// landscapeContent.classList = `landscape-content ${skyColor}`;
-
-// skySelect.addEventListener('change', changesky);
-
-// formatTempAndGarden();
 
 // Wave 6  ///////
 const resetCity = () => {
