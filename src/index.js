@@ -93,7 +93,7 @@ const kelvinToFarenheight = (temp) => {
 };
 
 const getRealTemp = async () => {
-  const response = await axios.get('http://127.0.0.1:5000/weather', {
+  const response = await axios.get('https://weatherreport.herokuapp.com/', {
     params: {
       lat: state.lat,
       lon: state.lon,
@@ -107,11 +107,14 @@ const getRealTemp = async () => {
 };
 
 const getLatLon = async () => {
-  const response = await axios.get('http://127.0.0.1:5000/location', {
-    params: {
-      q: state.city,
-    },
-  });
+  const response = await axios.get(
+    'https://weatherreport.herokuapp.com/location',
+    {
+      params: {
+        q: state.city,
+      },
+    }
+  );
   state.lat = response.data[0].lat;
   state.lon = response.data[0].lon;
   getRealTemp();
@@ -158,7 +161,6 @@ const changeSky = () => {
 
 const skySelect = document.getElementById('sky-select');
 skySelect.addEventListener('change', changeSky);
-
 
 // Wave 6  ///////
 const resetCity = () => {
