@@ -93,12 +93,15 @@ const kelvinToFarenheight = (temp) => {
 };
 
 const getRealTemp = async () => {
-  const response = await axios.get('https://weatherreport.herokuapp.com/', {
-    params: {
-      lat: state.lat,
-      lon: state.lon,
-    },
-  });
+  const response = await axios.get(
+    'https://weatherreport.herokuapp.com/weather',
+    {
+      params: {
+        lat: state.lat,
+        lon: state.lon,
+      },
+    }
+  );
   const weather = kelvinToFarenheight(response.data.main.temp);
 
   tempValue = Math.round(weather);
