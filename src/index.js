@@ -1,4 +1,6 @@
 'use strict';
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
 
 const state = {
   temp: 70,
@@ -21,7 +23,7 @@ const increaseTemp = () => {
 const decreaseTemp = () => {
   tempValue -= 1;
   tempControl.textContent = `${tempValue}`;
-  changeTempColorAndLandscape()
+  changeTempColorAndLandscape();
 };
 
 const changeTempColorAndLandscape = () => {
@@ -49,8 +51,6 @@ upButton.addEventListener('click', increaseTemp);
 const downButton = document.querySelector('#decreaseTempControl');
 downButton.addEventListener('click', decreaseTemp);
 
-
-
 // WAVE 3 /////////
 let city = state.city;
 const cityName = document.querySelector('#cityName');
@@ -64,20 +64,21 @@ const changeCity = () => {
 const inputCity = document.querySelector('#inputCity');
 inputCity.addEventListener('input', changeCity);
 
-
-
 // Wave 4 ///////
 const kelvinToFarenheight = (temp) => {
   return (temp - 273.15) * (9 / 5) + 32;
 };
 
 const getRealTemp = async () => {
-  const response = await axios.get('http://127.0.0.1:5000/weather', {
-    params: {
-      lat: state.lat,
-      lon: state.lon,
-    },
-  });
+  const response = await axios.get(
+    'https://weatherreport.herokuapp.com/weather',
+    {
+      params: {
+        lat: state.lat,
+        lon: state.lon,
+      },
+    }
+  );
   const weather = kelvinToFarenheight(response.data.main.temp);
 
   tempValue = Math.round(weather);
@@ -86,11 +87,14 @@ const getRealTemp = async () => {
 };
 
 const getLatLon = async () => {
-  const response = await axios.get('http://127.0.0.1:5000/location', {
-    params: {
-      q: city,
-    },
-  });
+  const response = await axios.get(
+    'https://weatherreport.herokuapp.com/location',
+    {
+      params: {
+        q: city,
+      },
+    }
+  );
   state.lat = response.data[0].lat;
   state.lon = response.data[0].lon;
   getRealTemp();
@@ -98,8 +102,6 @@ const getLatLon = async () => {
 
 const realTempButton = document.querySelector('#realTempButton');
 realTempButton.addEventListener('click', getLatLon);
-
-
 
 // Wave 5 //////
 const changeSky = () => {
@@ -127,8 +129,6 @@ const changeSky = () => {
 
 const skySelect = document.getElementById('sky-select');
 skySelect.addEventListener('change', changeSky);
-
-
 
 // WAVE 6 /////////
 const resetCity = () => {
